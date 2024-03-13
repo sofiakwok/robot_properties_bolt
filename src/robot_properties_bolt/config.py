@@ -79,6 +79,8 @@ class BoltConfig(BoltAbstract):
     robot_family = "bolt"
     robot_name = "bolt"
 
+    #print("calling BoltConfig")
+
     # Here we use the same urdf as for the quadruped but without the freeflyer.
     resources = Resources(robot_name)
     meshes_path = resources.meshes_path
@@ -173,7 +175,8 @@ class BoltHumanoidConfig(BoltAbstract):
     simu_urdf_path = resources.simu_urdf_path
     urdf_path = resources.urdf_path
     ctrl_path = resources.imp_ctrl_yaml_path
-    print(urdf_path)
+    # print("calling humanoid config")
+    # print(urdf_path)
 
     # The inertia of a single blmc_motor.
     motor_inertia = 0.0000045

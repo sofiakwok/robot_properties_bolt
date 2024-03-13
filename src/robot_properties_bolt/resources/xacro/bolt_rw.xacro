@@ -1,5 +1,5 @@
 <?xml version="1.0" ?>
-<robot name="bolt"
+<robot name="bolt_rw"
 
   xmlns:controller="http://playerstage.sourceforge.net/gazebo/xmlschema/#controller"
   xmlns:interface="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface"
