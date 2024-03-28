@@ -54,7 +54,7 @@ joint_calibrator:
     search_methods: [
       POS, NEG, POS, NEG, NEG, POS
     ]
-    position_offsets:  [-0.081, -0.156, +0.456, +0.049, -0.294, +0.486, ]
+    position_offsets:  [-0.0, -0.0, +0.0, +0.0, -0.0, +0.0, ]
     Kp: 3.
     Kd: 0.05
     T: 2.0
