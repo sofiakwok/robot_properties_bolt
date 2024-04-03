@@ -1,0 +1,62 @@
+#
+# Bolt driver parameterization
+#
+
+#
+# Map of the joints:
+#
+# +----------|------------|---------|------------|-------------+
+# + joint_id | joint_name | udriver | motor_port | motor_index +
+# +==========|============|=========|============|=============+
+# +    0     |   L_HAA    |   0     |    0       |     0       +
+# +----------|------------|---------|------------|-------------+
+# +    1     |   L_HFE    |   1     |    1       |     3       +
+# +----------|------------|---------|------------|-------------+
+# +    2     |   L_KFE    |   1     |    0       |     2       +
+# +----------|------------|---------|------------|-------------+
+# +    3     |   R_HAA    |   0     |    1       |     1       +
+# +----------|------------|---------|------------|-------------+
+# +    4     |   R_HFE    |   2     |    1       |     5       +
+# +----------|------------|---------|------------|-------------+
+# +    5     |   R_KFE    |   2     |    0       |     4       +
+# +----------|------------|---------|------------|-------------+
+# +    6     |   RW       |   3     |    0       |     6       +
+# +----------|------------|---------|------------|-------------+
+
+robot:
+    interface: enp6s0
+    joint_modules:
+        motor_numbers: [3, 2, 0, 1, 4, 5, 6] #[0, 3, 2, 1, 5, 4]
+        motor_constants: 0.025
+        gear_ratios: 9.
+        max_currents: 12.
+        reverse_polarities: [
+            true, true, true, true, false, false, true
+        ]
+        # Here is -2 * pi
+        lower_joint_limits: [
+            -6.28, -6.28, -6.28, -6.28, -6.28, -6.28, -1000
+        ]
+        # Here is +2 * pi
+        upper_joint_limits: [
+            +6.28, +6.28, +6.28, +6.28, +6.28, +6.28, 1000
+        ]
+        max_joint_velocities: 80.
+        safety_damping: 0.3
+    imu:
+        rotate_vector: [1, 2, 3]
+        orientation_vector: [1, 2, 3, 4]
+
+#
+# Joint calibrator parameters.
+#
+joint_calibrator:
+    # Can be either POS, NEG, ALT or AUTO
+    search_methods: [
+      POS, NEG, POS, NEG, NEG, POS, POS
+    ]
+    position_offsets:  [-0.001, -0.001, 0.001, -0.001, 0.001, 0.001, 0.0]
+    Kp: 3.
+    Kd: 0.05
+    T: 2.0
+    dt: 0.001

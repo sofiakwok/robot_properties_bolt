@@ -16,7 +16,7 @@
   <xacro:include filename="bolt_rw.xacro"/>
 
   <!-- Include the fully parametrized bolt -->
-  <xacro:bolt_full
+  <xacro:bolt_rw_full
       mesh_ext="${mesh_ext}"
       color_name="${color_name}"
       color="${color}"

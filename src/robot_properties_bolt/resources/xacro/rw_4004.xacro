@@ -1,0 +1,61 @@
+<?xml version="1.0" ?>
+<robot name="bolt_rw" xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
+
+  <!-- distance between base and reaction wheel axis -->
+  <!-- TODO: make distance accurate to CAD model -->
+  <xacro:property name="base_2_TR_z" value="${150.0 * 0.001}" />
+
+  <xacro:macro name="rw_4004" params="mesh_ext color_name color opacity">
+    <!-- RW link  -->
+    <joint name="RW" type="revolute">
+        <parent link="base_link"/>
+        <child link="RW_4004"/>
+        <limit effort="1000" lower="-1000" upper="1000" velocity="1000"/>
+        <!-- joints rotates around the global y-axis -->
+        <axis xyz="0 1 0"/>
+        <!-- placement of the joint -->
+        <origin xyz="0 0 ${base_2_TR_z}" rpy="0 0 0"/>
+        <!-- pybullet simulation parameters -->
+        <dynamics damping="0.0" friction="0.0"/>
+    </joint>
+    <link name="RW_4004">
+        <inertial>
+            <!-- RW inertia values - in kg and kg*m^2 -->
+            <mass value="0.1215"/>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <inertia ixx="0.000224603"
+                    ixy="0"
+                    ixz="0"
+                    iyy="0.000445725"
+                    iyz="0"
+                    izz="0.000224603"/>
+        </inertial>
+        <!-- RW LINK VISUAL -->
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh scale = "0.001 0.001 0.001" filename="package://robot_properties_bolt/resources/meshes/${mesh_ext}/rw_4004.${mesh_ext}"/>
+            </geometry>
+            <material name="${color_name}">
+                <color rgba="${color} ${opacity}"/>
+            </material>
+        </visual>
+        <!-- RW LINK COLLISION -->
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0"/>
+            <geometry>
+                <mesh scale = "0.001 0.001 0.001" filename="package://robot_properties_bolt/resources/meshes/${mesh_ext}/rw_4004.${mesh_ext}"/>
+            </geometry>
+            <material name="${color_name}">
+                <color rgba="${color} ${opacity}"/>
+            </material>
+        </collision>
+        <!-- Bullet specific paramters -->
+        <contact>
+            <lateral_friction value=".0"/>
+            <restitution value="0."/>
+        </contact>
+    </link>
+
+  </xacro:macro>
+</robot>

@@ -165,6 +165,96 @@ class BoltConfig(BoltAbstract):
     v0[:] = initial_velocity
     a0 = np.zeros(robot_model.nv)
 
+class BoltRWConfig(BoltAbstract):
+    robot_family = "bolt"
+    robot_name = "bolt_rw"
+
+    #print("calling BoltConfig")
+
+    # Here we use the same urdf as for the quadruped but without the freeflyer.
+    resources = Resources(robot_name)
+    meshes_path = resources.meshes_path
+    dgm_yaml_path = resources.dgm_yaml_path
+    simu_urdf_path = resources.simu_urdf_path
+    urdf_path = resources.urdf_path
+    ctrl_path = resources.imp_ctrl_yaml_path
+
+    # The inertia of a single blmc_motor.
+    motor_inertia = 0.0000045
+
+    # The motor gear ratio.
+    motor_gear_ration = 9.0
+
+    # pinocchio model.
+    robot_model = se3.buildModelFromUrdf(urdf_path, se3.JointModelFreeFlyer())
+    robot_model.rotorInertia[6:] = motor_inertia
+    robot_model.rotorGearRatio[6:] = motor_gear_ration
+
+    mass = np.sum([i.mass for i in robot_model.inertias])
+
+    base_name = robot_model.frames[2].name
+
+    # The number of motors, here they are the same as there are only revolute
+    # joints.
+    nb_joints = robot_model.nv - 6
+
+    # pinocchio model.
+    pin_robot_wrapper = RobotWrapper.BuildFromURDF(
+        urdf_path, meshes_path, se3.JointModelFreeFlyer()
+    )
+    # End effectors informations
+    robot_model = pin_robot_wrapper.model
+    end_eff_ids = []
+    for leg in ["FL", "FR"]:
+        end_eff_ids.append(robot_model.getFrameId(leg + "_ANKLE"))
+    nb_ee = len(end_eff_ids)
+
+    joint_names = ["FL_HAA", "FL_HFE", "FL_KFE", "FR_HAA", "FR_HFE", "FR_KFE", "RW"]
+
+    # Mapping between the ctrl vector in the device and the urdf indexes.
+    urdf_to_dgm = tuple(range(6))
+
+    map_joint_name_to_id = {}
+    map_joint_limits = {}
+    for i, (name, lb, ub) in enumerate(
+        zip(
+            robot_model.names[1:],
+            robot_model.lowerPositionLimit,
+            robot_model.upperPositionLimit,
+        )
+    ):
+        map_joint_name_to_id[name] = i
+        map_joint_limits[i] = [float(lb), float(ub)]
+
+    # Define the initial state.
+    initial_configuration = np.array(
+        [
+            0.0,
+            0.0,
+            0.35487417,
+            0.0,
+            0.0,
+            0.0,
+            1.0,
+            -0.3,
+            0.78539816,
+            -1.57079633,
+            0.3,
+            0.78539816,
+            -1.57079633,
+        ]
+    )
+
+    initial_velocity = (6 + 6) * [
+        0,
+    ]
+
+    q0 = np.zeros(robot_model.nq)
+    q0[:] = initial_configuration
+    v0 = np.zeros(robot_model.nv)
+    v0[:] = initial_velocity
+    a0 = np.zeros(robot_model.nv)
+
 class BoltHumanoidConfig(BoltAbstract):
     robot_family = "bolt"
     robot_name = "bolt_humanoid"

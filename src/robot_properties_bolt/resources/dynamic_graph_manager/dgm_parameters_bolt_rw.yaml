@@ -8,29 +8,29 @@
 #
 
 device:
-  name: "bolt"
+  name: "bolt_rw"
   sensors:
     # joints data
     joint_positions:
-      size: 6
+      size: 7
     joint_velocities:
-      size: 6
+      size: 7
     joint_torques:
-      size: 6
+      size: 7
     joint_target_torques:
-      size: 6
+      size: 7
     # additional data
     # slider_positions:
     #   size: 4
     # robot status
     motor_enabled:
-      size: 6
+      size: 7
     motor_ready:
-      size: 6
+      size: 7
     motor_board_enabled:
-      size: 3
+      size: 4
     motor_board_errors:
-      size: 3
+      size: 4
     base_accelerometer:
       size: 3
     base_gyroscope:
@@ -51,10 +51,10 @@ hardware_communication:
   # Angle between the next index and the home position(joint_positions=12*[0.,])
   calibration:
     # 'FL_HAA', 'FL_HFE', 'FL_KFE', 'FR_HAA', 'FR_HFE', 'FR_KFE'
-    index_to_zero_angle: [0.039, -0.290, -0.465, -0.766, -0.435, -0.449, ]
+    index_to_zero_angle: [0.039, -0.290, -0.465, -0.766, -0.435, -0.449, 0]
   network_id: "enp6s0"
 
-  ros_node_name: "bolt"
+  ros_node_name: "bolt_rw"
   shared_memory_name: "DGM_ShM"
   cpu_id: 0
 

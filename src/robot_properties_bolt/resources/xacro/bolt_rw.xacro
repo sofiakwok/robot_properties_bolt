@@ -6,7 +6,7 @@
   xmlns:sensor="http://playerstage.sourceforge.net/gazebo/xmlschema/#sensor"
   xmlns:xacro="http://playerstage.sourceforge.net/gazebo/xmlschema/#interface">
 
-  <xacro:macro name="bolt_full" params="mesh_ext color_name color opacity new_leg has_passive_ankle">
+  <xacro:macro name="bolt_rw_full" params="mesh_ext color_name color opacity new_leg has_passive_ankle">
 
     <!-- This file is based on: https://atlas.is.localnet/confluence/display/AMDW/Quadruped+URDF+Files -->
     <link name="base_link">
@@ -46,6 +46,16 @@
         <restitution value="0.5"/>
       </contact>
     </link> <!-- END BASE LINK -->
+
+    <!-- Include the reaction wheel -->
+    <xacro:include filename="rw_4004.xacro"/>
+
+    <!-- Include the upper body -->
+    <xacro:rw_4004
+        mesh_ext="${mesh_ext}"
+        color_name="${color_name}"
+        color="${color}"
+        opacity="${opacity}"/>
 
     <!-- Include the legs -->
     <xacro:include filename="leg.xacro"/>
