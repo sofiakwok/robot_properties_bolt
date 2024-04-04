@@ -102,7 +102,7 @@ class BoltRWRobot(PinBulletWrapper):
                 self.pin_robot.model.getFrameId(leg + "_ANKLE")
             )
             self.end_effector_names.append(leg + "_ANKLE")
-        controlled_joints += "RW"
+        controlled_joints += ["RW"]
         self.joint_names = controlled_joints
         self.nb_ee = len(self.end_effector_names)
 

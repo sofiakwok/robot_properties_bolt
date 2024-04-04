@@ -242,10 +242,11 @@ class BoltRWConfig(BoltAbstract):
             0.3,
             0.78539816,
             -1.57079633,
+            0.0,
         ]
     )
 
-    initial_velocity = (6 + 6) * [
+    initial_velocity = (6 + 7) * [
         0,
     ]
 
