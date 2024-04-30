@@ -154,6 +154,23 @@ class BoltConfig(BoltAbstract):
             -1.57079633,
         ]
     )
+    # initial_configuration = np.array(
+    #     [
+    #         0.0,
+    #         0.0,
+    #         0.35487417,
+    #         0.0,
+    #         0.0,
+    #         0.0,
+    #         1.0,
+    #         0.0, 
+    #         0.0,
+    #         0.0, 
+    #         0.0,
+    #         0.0, 
+    #         0.0, 
+    #     ]
+    # )
 
     initial_velocity = (6 + 6) * [
         0,
