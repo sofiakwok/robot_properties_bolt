@@ -24,7 +24,7 @@
 robot:
     interface: enp6s0
     joint_modules:
-        motor_numbers: [0, 3, 2, 1, 5, 4] #[0, 3, 2, 1, 5, 4]
+        motor_numbers: [0, 3, 2, 1, 5, 4] 
         motor_constants: 0.025
         gear_ratios: 9.
         max_currents: 12.
