@@ -29,7 +29,7 @@ robot:
         gear_ratios: 9.
         max_currents: 12.
         reverse_polarities: [
-            true, true, true, true, false, false
+            true, true, true, true, true, true
         ]
         # Here is -2 * pi
         lower_joint_limits: [
