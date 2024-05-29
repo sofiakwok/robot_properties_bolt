@@ -154,6 +154,7 @@ class BoltConfig(BoltAbstract):
             -1.57079633,
         ]
     )
+    
     # initial_configuration = np.array(
     #     [
     #         0.0,
