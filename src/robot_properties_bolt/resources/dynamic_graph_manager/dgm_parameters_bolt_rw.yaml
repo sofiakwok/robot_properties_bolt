@@ -41,7 +41,7 @@ device:
       size: 3
   controls:
     ctrl_joint_torques:
-      size: 6
+      size: 7
     ctrl_heart_beat:
       size: 1
 hardware_communication:
