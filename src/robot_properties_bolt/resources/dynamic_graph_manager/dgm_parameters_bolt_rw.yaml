@@ -51,7 +51,7 @@ hardware_communication:
   # Angle between the next index and the home position(joint_positions=12*[0.,])
   calibration:
     # 'FL_HAA', 'FL_HFE', 'FL_KFE', 'FR_HAA', 'FR_HFE', 'FR_KFE'
-    index_to_zero_angle: [0.039, -0.290, -0.465, -0.766, -0.435, -0.449, 0]
+    index_to_zero_angle: [0.0, -0.0, -0.0, -0.0, -0.0, -0.0, 0]
   network_id: "enp6s0"
 
   ros_node_name: "bolt_rw"
