@@ -1,0 +1,14 @@
+#
+# Bolt driver parameterization
+#
+
+joint_gains:
+    Kp: 5.
+    Kd: 0.0005
+    Kp_rw: -8.
+    Kd_rw: -0.0005
+
+# sim settings
+# kp = 5.0 * 0.25;
+# kd = -0.1 * 0.25;
+    
