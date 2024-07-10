@@ -3,10 +3,12 @@
 #
 
 joint_gains:
-    Kp: 2.5 #7.55 #0.125 #6 
-    Kd: 0.001 #0.0225
+    Kp: 3 #7.55 #0.125 #6 
+    Kd: 0.05 #0.0225
     Kp_rw: -10.
     Kd_rw: -0.01
+    Kp_sim: 1
+    Kd_sim: 0.0005
 
 # sim settings
 # kp = 8.25
