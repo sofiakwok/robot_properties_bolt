@@ -3,14 +3,27 @@
 #
 
 joint_gains:
-    Kp: 3 #7.55 #0.125 #6 
-    Kd: 0.05 #0.0225
+    Kp: 1.5 #7.55 #0.125 #6 
+    Kd: 0.0005 #0.0225
     Kp_rw: -10.
     Kd_rw: -0.01
-    Kp_sim: 2
+    Kp_sim: 2 #0.75 for air #2 for ground
     Kd_sim: 0.0005
 
 # sim settings
 # kp = 8.25
 # kd = 0.001;
+
+##### without reaction wheel
     
+# for pd in air - works when lowered down onto ground
+# desired joint positions: 0.0, 0.1, -0.2, 0.0, 0.1, -0.2
+# actual joint positions: 0.00033, 0.1253, -0.1782, 0.0007861, 0.1004, -0.1775
+# Kp: 1.5
+# Kd: 0.0005 
+
+# for pd starting on ground
+# Kp_sim: 2
+# Kd_sim: 0.0005
+# desired joint positions: 0.0, 0.2, -0.4, 0.0, 0.2, -0.4
+# actual joint positions: 0.002165, 0.2015, -0.4399, 0.003575, 0.1997, -0.4442
