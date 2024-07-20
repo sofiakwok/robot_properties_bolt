@@ -7,7 +7,7 @@ joint_gains:
     Kd: 0.0005 #0.0225
     Kp_rw: -10.
     Kd_rw: -0.01
-    Kp_sim: 2 #0.75 for air #2 for ground
+    Kp_sim: 1.75 #0.75 for air #2 for ground
     Kd_sim: 0.0005
 
 # sim settings
